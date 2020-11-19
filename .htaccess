@@ -1,0 +1,10 @@
+# archivo .htaccess
+
+RewriteEngine on
+
+RewriteRule ^GestionBiblioteca/Buscador$ controllers/Buscador.php
+RewriteRule ^GestionBiblioteca/CerrarSesion$ controllers/CerrarSesion.php
+RewriteRule ^GestionBiblioteca/ConfirmarPrestamo$ controllers/ConfirmarPrestamo.php
+RewriteRule ^GestionBiblioteca/Devoluciones$ controllers/Devoluciones.php
+RewriteRule ^GestionBiblioteca/InicioSesion$ controllers/InicioSesion.php
+RewriteRule ^GestionBiblioteca/MostrarTitulos$ controllers/MostrarTitulos.php
