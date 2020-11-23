@@ -5,16 +5,17 @@ $controlador = "ConfirmarPrestamo";
 
 	<div class="PrimeraAparicion">
 
-		
 
 	<?php if (empty ($this->Prestamo)) { ?>	
-		<p class="text-dark">No ha solicitado ningún libro para préstamo<p>
+			<p class="lead" ><strong>No ha solicitado ningún libro para préstamo</strong></p>
 	<?php } ?>
 
 		<?php if (isset ($this->DatosLibrosEjemplaresPrestados)) { ?>
-			<p class="text-dark">El prestamo solicitado no se pudo realizar. Los siguientes libros se encuentran prestados en este momento. Para realizar el prestamo debe sacarlos de la seleccion <p>
-			<table>
-				<tr><th>Id_libro</th><th>titulo</th><th>Autor</th></tr>
+			<p class="alert alert-info">El prestamo solicitado no se pudo realizar. Los siguientes libros se encuentran prestados en este momento</p>
+			<table class="table table-hover">
+			<thead class="thead-dark">	
+				<tr><th>Identificador libro</th><th>Titulo</th><th>Autor</th></tr>
+			</thead>
 				<?php foreach ($this->DatosLibrosEjemplaresPrestados as $key => $value) { ?>
 					<tr>
 						<td><?php echo $this->DatosLibrosEjemplaresPrestados [$key]['numero_libro'] ?></td>
@@ -25,14 +26,14 @@ $controlador = "ConfirmarPrestamo";
 				<?php } ?>
 			</table>
 
-
+			<p class="alert alert-info">Para realizar el prestamo debe sacarlos de esta seleccion:</p>
 		<?php } ?>
 		
 		<form action="" method="post">
 			<table>
 			<table class="table table-hover">
 				<thead class="thead-dark">	
-					<tr><th>Identificador libro</th><th>titulo</th><th>Autor</th><th>Quitar de prestamos</th></tr>
+					<tr><th>Identificador libro</th><th>Titulo</th><th>Autor</th><th>Quitar de prestamos</th></tr>
 				</thead>
 				<tbody id="bodyTitulos">
 					<?php foreach ($this->Prestamo as $key => $value) { ?>

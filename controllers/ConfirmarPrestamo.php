@@ -95,15 +95,15 @@ if(count($_POST)>0){
         /* 2) Si estoy aca es porque ninguno de los ejemplares esta prestado 
             Controlar si usuario no excede limites de ejemplares a prestar */
         else{    
-            $tipo_usuario = $_SESSION['tipo_usuario'];
-            $numero_socio = $_SESSION['numero_usuario'];
+            //$tipo_usuario = $_SESSION['tipo_usuario'];
+            //$numero_socio = $_SESSION['numero_usuario'];
             
             /* 2.a) Cantidad de ejemplares prestados */
-            $cantidadEjemplaresPrestados = $l-> cantidadEjemplaresPrestados ($numero_socio); 
+            $cantidadEjemplaresPrestados = $l-> cantidadEjemplaresPrestados ($_SESSION['numero_usuario']); 
             //echo '<br/>Cantidad de ejemplares prestados = '.$cantidadEjemplaresPrestados;
             
             /* 2.b) Cantidad de ejemplares permitidos */
-            $cantidadEjemplaresPermitidos = $l-> cantidadEjemplaresPermitidos ($tipo_usuario);
+            $cantidadEjemplaresPermitidos = $l-> cantidadEjemplaresPermitidos ($_SESSION['tipo_usuario']);
             
             //echo '<br/>Cantidad de ejemplares permitidos = '.$cantidadEjemplaresPermitidos['cantidad_libros'];
 
@@ -120,7 +120,7 @@ if(count($_POST)>0){
             }
             /* ACA ESTA TODO BIEN. CARGO EL PRESTAMO Y LOS EJEMPLARES */
             if ($contador <= $cantidadEjemplaresParaPrestamo){
-                $numero_prestamo = $l->cargarPrestamo ($numero_socio);
+                $numero_prestamo = $l->cargarPrestamo ($_SESSION['numero_usuario']);
                 
                 foreach ($ejemplares as $campo => $valor){
                     $l->cargarPrestamoEjemplar ($numero_prestamo['numero_prestamo'], $ejemplares[$campo]['numero_ejemplar'] );

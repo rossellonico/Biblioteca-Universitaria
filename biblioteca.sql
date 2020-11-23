@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-11-2020 a las 22:15:44
+-- Tiempo de generación: 23-11-2020 a las 15:45:25
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.6
 
@@ -239,13 +239,13 @@ INSERT INTO `libros` (`numero_libro`, `titulo`, `subtitulo`, `edicion`, `anio`, 
 (16, 'La paciencia de la araña', NULL, '2da', 1999, 369, 7308, 'MI01'),
 (17, 'El hombre que amaba a los perros', NULL, '1ra', 2010, 576, 7732, 'CO01'),
 (18, 'Herejes', NULL, '2da', 2013, 2587, 7732, 'CO01'),
-(19, 'El sueño eterno', NULL, '1ra', 1995, 258, 6396, '2'),
-(20, 'Adiós muñeca', NULL, '1ra', 1996, 369, 6396, '2'),
-(21, 'La ventana siniestra', NULL, '2da', 1996, 147, 6396, '2'),
-(22, 'La dama del lago', NULL, '1ra', 1996, 789, 6396, '2'),
-(23, 'La hermana pequeña', NULL, '1ra', 1996, 456, 6396, '2'),
-(24, 'El largo adiós', NULL, '1ra', 1997, 159, 6396, '2'),
-(25, 'Cocktail de barro', NULL, '1ra', 1987, 753, 6396, '2');
+(19, 'El sueño eterno', NULL, '1ra', 1995, 258, 6396, 'BR01'),
+(20, 'Adiós muñeca', NULL, '1ra', 1996, 369, 6396, 'BR01'),
+(21, 'La ventana siniestra', NULL, '2da', 1996, 147, 6396, 'BR01'),
+(22, 'La dama del lago', NULL, '1ra', 1996, 789, 6396, 'BR01'),
+(23, 'La hermana pequeña', NULL, '1ra', 1996, 456, 6396, 'BR01'),
+(24, 'El largo adiós', NULL, '1ra', 1997, 159, 6396, 'BR01'),
+(25, 'Cocktail de barro', NULL, '1ra', 1987, 753, 6396, 'BR01');
 
 -- --------------------------------------------------------
 
@@ -328,7 +328,7 @@ INSERT INTO `paises` (`codigo_pais`, `nombre_pais`) VALUES
 
 CREATE TABLE `prestamos` (
   `numero_prestamo` int(6) UNSIGNED NOT NULL,
-  `numero_socio` int(5) NOT NULL,
+  `numero_socio` int(5) UNSIGNED NOT NULL,
   `tipo_prestamo` varchar(1) NOT NULL,
   `fecha_prestamo` date NOT NULL,
   `fecha_limite_devolucion` date NOT NULL
@@ -408,7 +408,18 @@ INSERT INTO `prestamos` (`numero_prestamo`, `numero_socio`, `tipo_prestamo`, `fe
 (67, 1, 'D', '2020-11-18', '2020-11-25'),
 (68, 1, 'D', '2020-11-18', '2020-11-25'),
 (69, 1, 'D', '2020-11-19', '2020-11-26'),
-(70, 1, 'D', '2020-11-19', '2020-11-26');
+(70, 1, 'D', '2020-11-19', '2020-11-26'),
+(71, 2, 'D', '2020-11-21', '2020-11-28'),
+(72, 2, 'D', '2020-11-21', '2020-11-28'),
+(73, 2, 'D', '2020-11-01', '2020-11-08'),
+(74, 1, 'D', '2020-11-22', '2020-11-29'),
+(75, 4, 'D', '2020-11-22', '2020-11-29'),
+(76, 1, 'D', '2020-11-22', '2020-11-29'),
+(77, 1, 'D', '2020-11-23', '2020-11-30'),
+(78, 1, 'D', '2020-11-23', '2020-11-30'),
+(79, 4, 'D', '2020-11-23', '2020-11-30'),
+(80, 2, 'D', '2020-11-23', '2020-11-30'),
+(81, 2, 'D', '2020-11-23', '2020-11-30');
 
 -- --------------------------------------------------------
 
@@ -417,7 +428,7 @@ INSERT INTO `prestamos` (`numero_prestamo`, `numero_socio`, `tipo_prestamo`, `fe
 --
 
 CREATE TABLE `prestamos_ejemplares` (
-  `numero_prestamo` int(6) NOT NULL,
+  `numero_prestamo` int(6) UNSIGNED NOT NULL,
   `numero_ejemplar` int(6) NOT NULL,
   `fecha_efectiva_devolucion` date DEFAULT NULL,
   `precio_multa` decimal(10,0) DEFAULT NULL,
@@ -484,7 +495,39 @@ INSERT INTO `prestamos_ejemplares` (`numero_prestamo`, `numero_ejemplar`, `fecha
 (68, 18, '2020-11-18', NULL, NULL),
 (70, 40, '2020-11-19', NULL, NULL),
 (70, 42, '2020-11-19', NULL, NULL),
-(70, 44, '2020-11-19', NULL, NULL);
+(70, 44, '2020-11-19', NULL, NULL),
+(71, 40, '2020-11-21', NULL, NULL),
+(71, 42, '2020-11-21', NULL, NULL),
+(72, 41, '2020-11-21', NULL, NULL),
+(72, 43, '2020-11-21', NULL, NULL),
+(73, 18, '2020-11-21', '130', NULL),
+(74, 42, '2020-11-22', NULL, NULL),
+(75, 40, NULL, NULL, NULL),
+(75, 42, '2020-11-22', NULL, NULL),
+(75, 44, '2020-11-22', NULL, NULL),
+(75, 47, '2020-11-22', NULL, NULL),
+(75, 49, '2020-11-22', NULL, NULL),
+(76, 41, '2020-11-23', NULL, NULL),
+(76, 42, '2020-11-23', NULL, NULL),
+(76, 44, '2020-11-23', NULL, NULL),
+(76, 47, '2020-11-23', NULL, NULL),
+(76, 49, '2020-11-23', NULL, NULL),
+(77, 41, '2020-11-23', NULL, NULL),
+(77, 42, '2020-11-23', NULL, NULL),
+(77, 44, '2020-11-23', NULL, NULL),
+(77, 47, '2020-11-23', NULL, NULL),
+(77, 49, '2020-11-23', NULL, NULL),
+(78, 22, '2020-11-23', NULL, NULL),
+(78, 41, '2020-11-23', NULL, NULL),
+(78, 42, '2020-11-23', NULL, NULL),
+(78, 44, '2020-11-23', NULL, NULL),
+(78, 47, '2020-11-23', NULL, NULL),
+(78, 49, '2020-11-23', NULL, NULL),
+(79, 18, NULL, NULL, NULL),
+(79, 22, NULL, NULL, NULL),
+(80, 23, NULL, NULL, NULL),
+(81, 41, NULL, NULL, NULL),
+(81, 42, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -507,7 +550,7 @@ CREATE TABLE `socios` (
   `provincia` varchar(30) NOT NULL,
   `email` varchar(320) NOT NULL,
   `clave` varchar(40) NOT NULL,
-  `tipo_usuario` int(11) NOT NULL
+  `tipo_usuario` int(1) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -516,9 +559,9 @@ CREATE TABLE `socios` (
 
 INSERT INTO `socios` (`numero_socio`, `dni`, `nombres`, `apellidos`, `fecha_nacimiento`, `calle`, `numero_dir`, `piso`, `departamento`, `codigo_postal`, `municipio`, `provincia`, `email`, `clave`, `tipo_usuario`) VALUES
 (1, 30123456, 'Juan Martín', 'Walsh', '1984-07-21', 'Melincue', 3965, 2, 'b', 1598, 'CABA', 'CABA', 'juanwalsh@gmail.com', '797ca9ce510d101c51cc17eb8446fc375bef981a', 2),
-(2, 30789456, 'Andrés', 'Brenner', '1984-07-23', 'Albarellos', 2147, NULL, '', 1406, 'CABA', 'CABA', 'andresbrenner@gmail.com', '', 2),
-(3, 13258963, 'Debora', 'Yanco', '1963-01-29', 'Pareja', 2547, 3, 'b', 1408, 'CABA', 'CABA', 'deborayanco@gmail.com', '', 3),
-(4, 4789654, 'Leon', 'Yanco', '1938-06-21', 'Corrientes', 4258, 9, 'b', 1364, 'CABA', 'CABA', 'leonyanco@gmail.com', '', 4),
+(2, 30789456, 'Andrés', 'Brenner', '1984-07-23', 'Albarellos', 2147, NULL, '', 1406, 'CABA', 'CABA', 'andresbrenner@gmail.com', 'f578c690e5ce4f9224482009bca3a757914ec97f', 2),
+(3, 13258963, 'Debora', 'Yanco', '1963-01-29', 'Pareja', 2547, 3, 'b', 1408, 'CABA', 'CABA', 'deborayanco@gmail.com', 'fa355b9f65f1d2a109383e94c21c162162d4f1b4', 3),
+(4, 4789654, 'Leon', 'Yanco', '1938-06-21', 'Corrientes', 4258, 9, 'b', 1364, 'CABA', 'CABA', 'leonyanco@gmail.com', 'dc94d1c83a9079a7d0cee69830013c6eacc0d10d', 4),
 (5, 31258963, 'Guido', 'Benedetti', '1985-12-30', 'Aristobulo del Valle', 14, NULL, '', 1879, 'San Isidro', 'Provincia de Buenos Aires', 'guidobenedetti@gmail.com', '', 1),
 (6, 8978654, 'Fernando', 'Olub', '1950-04-22', 'La serena', 2587, 4, 'f', 1365, 'San Martin', 'Provincia de Buenos Aires', 'fernandoolub@gmail.com', '', 2),
 (7, 25753951, 'Carla', 'Deiana', '1978-05-21', 'Cuenca', 325, 2, 'e', 2587, 'Rosario', 'Santa Fe', 'carladeiana@gmail.com', '', 3),
@@ -533,7 +576,7 @@ INSERT INTO `socios` (`numero_socio`, `dni`, `nombres`, `apellidos`, `fecha_naci
 --
 
 CREATE TABLE `tipo_usuario` (
-  `numero_tipo` int(1) NOT NULL,
+  `numero_tipo` int(1) UNSIGNED NOT NULL,
   `descripcion` varchar(30) NOT NULL,
   `cantidad_libros` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -556,13 +599,15 @@ INSERT INTO `tipo_usuario` (`numero_tipo`, `descripcion`, `cantidad_libros`) VAL
 -- Indices de la tabla `autores`
 --
 ALTER TABLE `autores`
-  ADD PRIMARY KEY (`numero_autor`);
+  ADD PRIMARY KEY (`numero_autor`),
+  ADD KEY `numero_ciudad` (`numero_ciudad`);
 
 --
 -- Indices de la tabla `ciudades`
 --
 ALTER TABLE `ciudades`
-  ADD PRIMARY KEY (`numero_ciudad`);
+  ADD PRIMARY KEY (`numero_ciudad`),
+  ADD KEY `codigo_pais` (`codigo_pais`);
 
 --
 -- Indices de la tabla `editoriales`
@@ -574,7 +619,8 @@ ALTER TABLE `editoriales`
 -- Indices de la tabla `ejemplares`
 --
 ALTER TABLE `ejemplares`
-  ADD PRIMARY KEY (`numero_ejemplar`);
+  ADD PRIMARY KEY (`numero_ejemplar`),
+  ADD KEY `numero_libro` (`numero_libro`);
 
 --
 -- Indices de la tabla `estado`
@@ -586,13 +632,16 @@ ALTER TABLE `estado`
 -- Indices de la tabla `libros`
 --
 ALTER TABLE `libros`
-  ADD PRIMARY KEY (`numero_libro`);
+  ADD PRIMARY KEY (`numero_libro`),
+  ADD KEY `ciudades2` (`numero_ciudad`),
+  ADD KEY `id_editorial` (`id_editorial`);
 
 --
 -- Indices de la tabla `libros_autores`
 --
 ALTER TABLE `libros_autores`
-  ADD PRIMARY KEY (`numero_libro`,`numero_autor`);
+  ADD PRIMARY KEY (`numero_libro`,`numero_autor`),
+  ADD KEY `numa` (`numero_autor`);
 
 --
 -- Indices de la tabla `paises`
@@ -605,7 +654,8 @@ ALTER TABLE `paises`
 -- Indices de la tabla `prestamos`
 --
 ALTER TABLE `prestamos`
-  ADD PRIMARY KEY (`numero_prestamo`);
+  ADD PRIMARY KEY (`numero_prestamo`),
+  ADD KEY `nume` (`numero_socio`);
 
 --
 -- Indices de la tabla `prestamos_ejemplares`
@@ -646,13 +696,61 @@ ALTER TABLE `libros`
 -- AUTO_INCREMENT de la tabla `prestamos`
 --
 ALTER TABLE `prestamos`
-  MODIFY `numero_prestamo` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `numero_prestamo` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT de la tabla `socios`
 --
 ALTER TABLE `socios`
   MODIFY `numero_socio` int(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `autores`
+--
+ALTER TABLE `autores`
+  ADD CONSTRAINT `numero_ciudad` FOREIGN KEY (`numero_ciudad`) REFERENCES `ciudades` (`numero_ciudad`);
+
+--
+-- Filtros para la tabla `ciudades`
+--
+ALTER TABLE `ciudades`
+  ADD CONSTRAINT `codigo_pais` FOREIGN KEY (`codigo_pais`) REFERENCES `paises` (`codigo_pais`);
+
+--
+-- Filtros para la tabla `ejemplares`
+--
+ALTER TABLE `ejemplares`
+  ADD CONSTRAINT `numero_libro` FOREIGN KEY (`numero_libro`) REFERENCES `libros` (`numero_libro`);
+
+--
+-- Filtros para la tabla `libros`
+--
+ALTER TABLE `libros`
+  ADD CONSTRAINT `ciudades2` FOREIGN KEY (`numero_ciudad`) REFERENCES `ciudades` (`numero_ciudad`),
+  ADD CONSTRAINT `id_editorial` FOREIGN KEY (`id_editorial`) REFERENCES `editoriales` (`id_editorial`);
+
+--
+-- Filtros para la tabla `libros_autores`
+--
+ALTER TABLE `libros_autores`
+  ADD CONSTRAINT `numa` FOREIGN KEY (`numero_autor`) REFERENCES `autores` (`numero_autor`),
+  ADD CONSTRAINT `numl` FOREIGN KEY (`numero_libro`) REFERENCES `libros` (`numero_libro`);
+
+--
+-- Filtros para la tabla `prestamos`
+--
+ALTER TABLE `prestamos`
+  ADD CONSTRAINT `nume` FOREIGN KEY (`numero_socio`) REFERENCES `socios` (`numero_socio`);
+
+--
+-- Filtros para la tabla `prestamos_ejemplares`
+--
+ALTER TABLE `prestamos_ejemplares`
+  ADD CONSTRAINT `fk` FOREIGN KEY (`numero_prestamo`) REFERENCES `prestamos` (`numero_prestamo`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

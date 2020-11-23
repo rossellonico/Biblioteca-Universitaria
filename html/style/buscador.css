@@ -20,16 +20,14 @@ form{
 }
 
 .PrimeraAparicion{
-    margin-top: 150px;
-    background-color: white;
-    
+	margin-top: 150px;
+	background-color:white;
 }
-
-
-span{
-    padding: 20px;
-    font-style: italic;
+/*
+div .putisimo{
+    background-color: red;
 }
+*/
 
 .MostrarTitulos{
     background-color: white;
@@ -40,8 +38,8 @@ h3{
     border-bottom-style: solid;
 	border-bottom-color: #ac0000;
 	border-bottom-width: 2px;
-	text-align: center;
-	padding: 50px;
+	text-align: right;
+	padding: 20px;
 
 }
 

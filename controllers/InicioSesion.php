@@ -13,11 +13,9 @@ if(count($_POST)>= 1 ){
     if (!isset ($_POST['email'])) die ("error 1");
     if (!isset ($_POST['clave'])) die ("error 2");
     
-    $email=$_POST['email'];
-    $clave=$_POST['clave'];
 
     $s = new Socios();
-    $numero_socio = $s->ValidarSocio($email,$clave);
+    $numero_socio = $s->ValidarSocio($_POST['email'],$_POST['clave']);
     
     if($numero_socio){
         $_SESSION['logueado']=true;

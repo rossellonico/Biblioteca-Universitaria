@@ -4,11 +4,11 @@ $controlador = "MostrarTitulos";
 
 	<div class="PrimeraAparicion">
 		<?php if ($this->SinTituloAutor == TRUE) { ?>
-			<p class="text-dark">Usted no ha ingresado ningun título ni autor</p>
+			<p class="lead"><strong>Usted no ha ingresado ningun título ni autor </strong></p>
 		<?php } ?>
 						 
 		<?php if ($this->NoHayCoincidencia == TRUE ) { ?>
-			<p class="text-dark">Ningun libro coincide con la busqueda pedida</p>
+			<p class="lead"><strong>Ningun libro coincide con la busqueda pedida</strong></p>
 		<?php } ?>
 
 
@@ -30,12 +30,12 @@ $controlador = "MostrarTitulos";
 	<div class="MostrarTitulos">
 	
 		<?php if ( ($this->Confirmar == FALSE) and  ($this->Repetidos == FALSE)   ) { ?>
-		<p class="text-dark">Su pedido de agregar esos libros para prestamos no fue realizado. Usted solicito una cantidad de libros mayor a la que tiene permitida</p>
+		<p class="lead"><strong>Su pedido de agregar esos libros para prestamos no fue realizado. Usted solicito una cantidad de libros mayor a la que tiene permitida</strong></p>
 
 		<?php } ?>
 		
 		<?php if ($this->Repetidos == TRUE) { ?>
-		<p class="text-dark" >Su pedido de agregar esos libros para prestamos no fue realizado. Usted solicito más de una vez el mismo libro</p>
+		<p class="lead"><strong>Su pedido de agregar esos libros para prestamos no fue realizado. Usted solicito más de una vez el mismo libro</strong></p>
 
 		<?php } ?>
 

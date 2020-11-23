@@ -42,7 +42,7 @@ class Libros extends Model {
 		$this->db->query(" SELECT pe.numero_prestamo, pe.numero_ejemplar, l.titulo, a.apellidos, 
 							datediff ( CURRENT_TIMESTAMP, p.fecha_limite_devolucion) as dias_vencido
 							FROM prestamos p, prestamos_ejemplares pe, ejemplares e, libros l, libros_autores la, autores a 
-							where p.numero_socio = 1 AND
+							where p.numero_socio = $numero_socio AND
 								p.numero_prestamo = pe.numero_prestamo AND
 								pe.fecha_efectiva_devolucion is null AND
 								pe.numero_ejemplar = e.numero_ejemplar AND
@@ -93,7 +93,7 @@ class Libros extends Model {
 	public function cantidadEjemplaresPermitidos ($tipo_usuario){
 		
 		if (!ctype_digit($tipo_usuario)) throw new validacionException ("error validacion 8");
-		if ($tipo_usuario < 1 or $tipo_usuario > 3) throw new validacionException ("error validacion 9");
+		if ($tipo_usuario < 1 or $tipo_usuario > 4) throw new validacionException ("error validacion 9");
 
 		$this->db->query(" SELECT cantidad_libros
 							FROM tipo_usuario

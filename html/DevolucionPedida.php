@@ -5,7 +5,7 @@ $controlador = "Devoluciones";
     <div class="PrimeraAparicion">
 		
         <?php if ( empty ( $this->LibrosPrestados )) { ?>
-			<p class="text-dark">Usted no tiene libros prestados</p>
+			<p class="lead" ><strong>Usted no tiene libros prestados</strong></p>
         <?php } ?>
 
         <form action="" method="post">	

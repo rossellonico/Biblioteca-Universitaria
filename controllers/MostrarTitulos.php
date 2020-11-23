@@ -48,15 +48,15 @@ if(count($_POST)>0){
         }
         //echo '<br/>Cantidad de ejemplares en Session = '.$contadorSession;
 
-        $tipo_usuario = $_SESSION['tipo_usuario'];
-        $numero_socio = $_SESSION['numero_usuario'];
+        //$tipo_usuario = $_SESSION['tipo_usuario'];
+        //$numero_socio = $_SESSION['numero_usuario'];
         
         /* 2.a) Cantidad de ejemplares prestados */
-        $cantidadEjemplaresPrestados = $l-> cantidadEjemplaresPrestados ($numero_socio); 
+        $cantidadEjemplaresPrestados = $l-> cantidadEjemplaresPrestados ($_SESSION['numero_usuario']); 
         //echo '<br/>Cantidad de ejemplares prestados = '.$cantidadEjemplaresPrestados;
         
         /* 2.b) Cantidad de ejemplares permitidos */
-        $cantidadEjemplaresPermitidos = $l-> cantidadEjemplaresPermitidos ($tipo_usuario);
+        $cantidadEjemplaresPermitidos = $l-> cantidadEjemplaresPermitidos ($_SESSION['tipo_usuario']);
         //echo '<br/>Cantidad de ejemplares permitidos por tipo usuario = '.$cantidadEjemplaresPermitidos['cantidad_libros'];
 
         /* 2.c) Calcular cantidad de ejemplares disponibles para prestamo */
@@ -66,7 +66,7 @@ if(count($_POST)>0){
         /* 2.d) Controlo que no haya libros repetidos*/
         $repetidos=FALSE;
         foreach ($_POST as $campop => $valorp){
-            foreach ($_SESSION as $campos => $valors){
+            foreach ($_SESSION as $campos => $valors){ 
                 if (substr ($campos, 0,6) == $pedido and $valorp == $valors  ){
                     $repetidos= TRUE;
                     //echo '<br/>Repetido. El valorp es: '.$valorp.' El valors es: '.$valors;
