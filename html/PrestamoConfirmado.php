@@ -1,10 +1,10 @@
 <?php
-$controlador = "Buscador";
+$controlador = "PrestamoConfirmado";
  include("../html/Index.php") ?>
 	
 	<div class="PrimeraAparicion">
 	
-		<p class="text-dark"> Su prestamo ha sido confirmado. Su numero de prestamos es <?php echo $this->Numero_Prestamo['numero_prestamo']?> y la fecha de
+		<p class="alert alert-success" ><strong> Su prestamo ha sido confirmado. </strong> Su numero de prestamos es <?php echo $this->Numero_Prestamo['numero_prestamo']?> y la fecha de
 			devolucion es el <?php echo $this->Numero_Prestamo['fecha_limite_devolucion']?>. Se le han prestados los siguientes ejemplares: </p>
     	<table>
 			<table class="table table-hover">

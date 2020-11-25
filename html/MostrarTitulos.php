@@ -3,12 +3,13 @@ $controlador = "MostrarTitulos";
  include("../html/Index.php") ?>
 
 	<div class="PrimeraAparicion">
+		
 		<?php if ($this->SinTituloAutor == TRUE) { ?>
-			<p class="lead"><strong>Usted no ha ingresado ningun título ni autor </strong></p>
+			<p class="alert alert-danger"><strong> No hay libros para mostrar. </strong>Usted no ha ingresado ningun título ni autor </strong></p>
 		<?php } ?>
 						 
 		<?php if ($this->NoHayCoincidencia == TRUE ) { ?>
-			<p class="lead"><strong>Ningun libro coincide con la busqueda pedida</strong></p>
+			<p class="alert alert-danger"><strong> No hay libros para mostrar. </strong>Ningun libro coincide con la busqueda pedida</p>
 		<?php } ?>
 
 
@@ -30,12 +31,12 @@ $controlador = "MostrarTitulos";
 	<div class="MostrarTitulos">
 	
 		<?php if ( ($this->Confirmar == FALSE) and  ($this->Repetidos == FALSE)   ) { ?>
-		<p class="lead"><strong>Su pedido de agregar esos libros para prestamos no fue realizado. Usted solicito una cantidad de libros mayor a la que tiene permitida</strong></p>
+		<p class="alert alert-danger"><strong>Su pedido de agregar esos libros para prestamos no fue realizado.</strong> Usted solicito una cantidad de libros mayor a la que tiene permitida</p>
 
 		<?php } ?>
 		
 		<?php if ($this->Repetidos == TRUE) { ?>
-		<p class="lead"><strong>Su pedido de agregar esos libros para prestamos no fue realizado. Usted solicito más de una vez el mismo libro</strong></p>
+		<p class="alert alert-danger"><strong>Su pedido de agregar esos libros para prestamos no fue realizado.</strong> Usted solicito más de una vez el mismo libro</p>
 
 		<?php } ?>
 
@@ -59,7 +60,7 @@ $controlador = "MostrarTitulos";
 						</tbody>
 						<?php } ?>
 					</table>
-				<input type="submit" class="btn btn-primary" value="Agregar estos libros al pedido de prestamo" name="Solicita"/>
+				<input type="submit" class="btn btn-primary" value="Agregar libros tildados al pedido de prestamo" name="Solicita"/>
 			</form>
 		<?php } ?>
 

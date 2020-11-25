@@ -13,6 +13,7 @@ if (!isset ($_SESSION['logueado'])){
 
 if(count($_POST)>0){
 
+    /* Si pulso: "Devolver libros marcados"*/
     $l= new Libros;
     $librosPrestados= array();
     $librosPrestados = $l->buscarlibrosprestado ($_SESSION['numero_usuario']);
@@ -26,7 +27,6 @@ if(count($_POST)>0){
                 $librosDevueltos [$contador] = $librosPrestados [$campov];
             }
     }
-    //var_dump ($librosDevueltos);
 
     foreach ($librosDevueltos as $campo => $valor){
         if ($librosDevueltos[$campo]['dias_vencido'] <= 0)
@@ -35,16 +35,28 @@ if(count($_POST)>0){
             $librosDevueltos[$campo]['multa']= $librosDevueltos[$campo]['dias_vencido']* 10;
         $l->devolverEjemplares ($librosDevueltos[$campo]['numero_prestamo'], $librosDevueltos[$campo]['numero_ejemplar'], $librosDevueltos[$campo]['multa']);
     }
+    /* Si pulso:"Devolver libros marcados", pero no marco ninguno"*/
+    if (empty ($librosDevueltos)){
+        $v = new DevolucionPedida();
+        $seleccionaEjemplaresDevolucion = FALSE;
+        $v->SeleccionaEjemplaresDevolucion = $seleccionaEjemplaresDevolucion;
+        $v->LibrosPrestados = $librosPrestados;
+        $v ->render ();				
+    }
+    /* Si efectivamente devolvio libros*/
+    else{
     $v = new DevolucionRealizada();
     $v->LibrosDevueltos = $librosDevueltos;
     $v ->render ();				
-
+    }
 }
 else{
     $l= new Libros;
+    $seleccionaEjemplaresDevolucion = TRUE;
     $librosPrestados= array();
     $librosPrestados = $l->buscarlibrosprestado ($_SESSION['numero_usuario']);
     $v = new DevolucionPedida();
+    $v->SeleccionaEjemplaresDevolucion = $seleccionaEjemplaresDevolucion;
     $v->LibrosPrestados = $librosPrestados;
     $v ->render ();				
 }

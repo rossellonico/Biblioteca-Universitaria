@@ -1,0 +1,27 @@
+html, body {
+    height: 100%;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+body {
+    display: table-cell;
+    vertical-align: center;
+}
+
+form{
+	width: 950px;
+	padding: 20px;
+	min-height: 150px;
+	height: auto;
+}
+
+img { 
+	width: 600px; height: 200px;
+}
+.nico {
+	margin-top: 30px 
+}

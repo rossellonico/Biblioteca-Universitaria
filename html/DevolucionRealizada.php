@@ -4,7 +4,7 @@ $controlador = "Devoluciones";
 
     <div class="PrimeraAparicion">
 		
-        <p class="lead" ><strong> Se ha concretado la carga de la devolucion de los ejemplares solicitas. Abajo el detalle correspondiente </strong> </p>
+        <p class="alert alert-success" ><strong> Se ha concretado la carga de la devolucion de los ejemplares solicitados. </strong> Abajo el detalle correspondiente</p>
         
         <table class="table table-hover">
         <thead class="thead-dark">
