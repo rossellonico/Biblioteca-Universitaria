@@ -18,14 +18,7 @@ if(count($_POST)>0){
         $l= new Libros;
         $pedido='Pedido';
         
-        /*1.- Pongo en la variable contador cuantos libros ya fueron agregados al pedido
-        foreach ($_SESSION as $campo => $valor){
-            $contador=0;
-            if (substr ($campo, 0,6) == $pedido){
-                $contador = (int) substr ($campo,6,2);
-            }
-        }
-        */
+        
         /* Cuento cuantos pedidos se hicieron en este post*/ 
         $contadorPost= count($_POST) - 1; //Empiezo en 1 porque ya esta el Post del submit
         
