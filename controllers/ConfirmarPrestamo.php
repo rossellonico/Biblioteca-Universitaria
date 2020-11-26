@@ -15,6 +15,8 @@ if (!isset ($_SESSION['logueado'])){
 
 if(count($_POST)>0){
 
+
+    
     /* INICIO QUITAR LIBROS DE PRESTAMOS */
     if (isset ($_POST['Quitar'])){
         
