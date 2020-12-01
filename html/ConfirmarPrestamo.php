@@ -5,9 +5,12 @@ $controlador = "ConfirmarPrestamo";
 
 	<div class="PrimeraAparicion">
 
+	<?php if ($this->SacaLibro == FALSE) { ?>
+		<p class="alert alert-danger" ><strong>No hay selecciono ningun libro para quitar.</strong> Si desea quitar libros debe tildarlos</p>
+	<?php } ?>
 
 	<?php if (empty ($this->Prestamo)) { ?>	
-			<p class="alert alert-danger" ><strong>No hay libros para confirmar prestamos.</strong> Usted no tiene libros pedidos</strong></p>
+			<p class="alert alert-danger" ><strong>No hay libros para confirmar prestamos.</strong> Usted no tiene libros pedidos</p>
 	<?php } ?>
 
 		<?php if (isset ($this->DatosLibrosEjemplaresPrestados)) { ?>

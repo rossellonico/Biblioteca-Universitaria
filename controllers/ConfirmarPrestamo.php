@@ -15,17 +15,19 @@ if (!isset ($_SESSION['logueado'])){
 
 if(count($_POST)>0){
 
-
-    
     /* INICIO QUITAR LIBROS DE PRESTAMOS */
     if (isset ($_POST['Quitar'])){
         
         /* 1) Sacar libros */
+        
         $pedido='Pedido';
+        $sacaLibro=FALSE;
         foreach ($_SESSION as $numero_pedido => $numero_ejemplar){
             foreach ($_POST as $key => $numero_ejemplar_quitado){
-                if ( (substr ($numero_pedido, 0,6) == $pedido) and $numero_ejemplar == $numero_ejemplar_quitado)
+                if ( (substr ($numero_pedido, 0,6) == $pedido) and $numero_ejemplar == $numero_ejemplar_quitado){
                     unset ($_SESSION[$numero_pedido]);
+                    $sacaLibro=TRUE;
+                }
             }
         }
         /* Mostrar pantalla */
@@ -41,12 +43,15 @@ if(count($_POST)>0){
         }
         $v = new ConfirmarPrestamo();
         $v->Prestamo = $prestamos; 
+        $v->SacaLibro=$sacaLibro;
         $v ->render ();		
     } /*FIN QUITAR LIBROS PRESTAMOS
 
     /* CONFIRMAR PRESTAMO SI ES POSIBLE */
-    else{
+    if (isset ($_POST['Solicita'])){
+
         $l= new Libros;
+        $sacaLibro=TRUE;
         /* 1) Busqueda de ejemplares para libros solicitados*/
         $pedido='Pedido';
         $ejemplares= array();
@@ -65,9 +70,6 @@ if(count($_POST)>0){
                 }
             }
         }
-       // var_dump ($ejemplares);
-       // echo '<br/>';
-       // var_dump ($librosEjemplaresPrestados);
         $datosLibroEjemplaresPrestados = array();
         $contador = 0;
         
@@ -88,6 +90,7 @@ if(count($_POST)>0){
             }
 
             $v = new ConfirmarPrestamo();
+            $v->SacaLibro=$sacaLibro;
             $v->DatosLibrosEjemplaresPrestados = $datosLibroEjemplaresPrestados;
             $v->Prestamo = $prestamos; 
             $v ->render ();	
@@ -139,6 +142,7 @@ if(count($_POST)>0){
                 }
 
                 $v = new PrestamoConfirmado();
+                $v->SacaLibro=$sacaLibro;
                 $v->Datos_Ejemplares = $datosEjemplares;
                 $v->Numero_Prestamo = $numero_prestamo; 
                 $v->Ejemplares = $ejemplares; 
@@ -159,6 +163,7 @@ if(count($_POST)>0){
                 }
                 $avisoPrestados= FALSE;
                 $v = new ConfirmarPrestamo();
+                $v->SacaLibro=$sacaLibro;
                 $v->AvisoPrestado = $avisoPrestados;
                 $v->Prestamo = $prestamos; 
                 $v ->render ();	
@@ -174,6 +179,7 @@ if(count($_POST)>0){
 else{
     /* PRIMERA CARGA DE LA PAGINA SIN POSTS*/
     $l= new Libros;
+    $sacaLibro=TRUE;
     $pedido='Pedido';
     $prestamos= array();
     $contador = 0;
@@ -189,6 +195,7 @@ else{
         $noHayPedidos=TRUE;
     $avisoPrestados= FALSE;
     $v = new ConfirmarPrestamo();
+    $v->SacaLibro=$sacaLibro;
     $v->AvisoPrestado = $avisoPrestados;
     $v->Prestamo = $prestamos; 
 

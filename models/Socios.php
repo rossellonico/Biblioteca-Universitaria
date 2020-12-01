@@ -54,10 +54,5 @@ class Socios extends Model {
 		return false;
 	}
 	
-
-
-
-
-	
 }
 class validacionException extends Exception {}

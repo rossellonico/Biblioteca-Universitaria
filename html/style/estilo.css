@@ -20,30 +20,11 @@ form{
 }
 
 .PrimeraAparicion{
-	margin-top: 150px;
-	background-color:white;
+	margin-top: 130px;
+    background-color:white;
+	
 }
-
 
 .MostrarTitulos{
     background-color: white;
-}
-
-h3{
-
-    border-bottom-style: solid;
-	border-bottom-color: #ac0000;
-	border-bottom-width: 2px;
-	text-align: right;
-	padding: 20px;
-
-}
-
-#tablaNovedades{
-	padding: 20px;
-
-}
-
-#tablaNovedades a{
-	text-decoration: none;
 }

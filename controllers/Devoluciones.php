@@ -35,7 +35,7 @@ if(count($_POST)>0){
             $librosDevueltos[$campo]['multa']= $librosDevueltos[$campo]['dias_vencido']* 10;
         $l->devolverEjemplares ($librosDevueltos[$campo]['numero_prestamo'], $librosDevueltos[$campo]['numero_ejemplar'], $librosDevueltos[$campo]['multa']);
     }
-    /* Si pulso:"Devolver libros marcados", pero no marco ninguno"*/
+    /* Si pulsó:"Devolver libros marcados", pero no marco ninguno"*/
     if (empty ($librosDevueltos)){
         $v = new DevolucionPedida();
         $seleccionaEjemplaresDevolucion = FALSE;
@@ -50,7 +50,7 @@ if(count($_POST)>0){
     $v ->render ();				
     }
 }
-else{
+else{ //Primer ingreso a al página
     $l= new Libros;
     $seleccionaEjemplaresDevolucion = TRUE;
     $librosPrestados= array();

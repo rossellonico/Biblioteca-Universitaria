@@ -13,8 +13,8 @@ if (!isset ($_SESSION['logueado'])){
 }
 if(count($_POST)>0){
 
-	if (!isset ($_POST['titulo1'])) die ("error 5");
-	if (!isset ($_POST['autor1'])) die ("error 6");
+	if (!isset ($_POST['titulo1'])) throw new validacionException ("error validacion 30");
+	if (!isset ($_POST['autor1'])) throw new validacionException ("error validacion 31");
 
 	$_SESSION['titulo1'] = $_POST['titulo1'];
 	$_SESSION['autor1'] = $_POST['autor1'];

@@ -10,8 +10,8 @@ session_start();
 
 if(count($_POST)>= 1 ){
 
-    if (!isset ($_POST['email'])) die ("error 1");
-    if (!isset ($_POST['clave'])) die ("error 2");
+    if (!isset ($_POST['email'])) throw new validacionException ("error validacion 28");
+    if (!isset ($_POST['clave'])) throw new validacionException ("error validacion 29");
     
 
     $s = new Socios();
@@ -42,3 +42,4 @@ if(count($_SESSION)>0){
     header ("location: ../GestionBiblioteca/Buscador");
     exit;
 }
+

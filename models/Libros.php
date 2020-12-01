@@ -130,12 +130,6 @@ class Libros extends Model {
 							where numero_prestamo = $lastID ");
 		return $this->db->fetch();
 
-		/*
-		$this->db->query ( "SELECT MAX(numero_prestamo) as numero_prestamo, DATE_FORMAT(fecha_limite_devolucion, '%d-%m-%Y') as fecha_limite_devolucion 
-							FROM prestamos
-							where numero_prestamo = (SELECT max(numero_prestamo) FROM prestamos)" ) ;
-		return $this->db->fetch();
-		*/
 	}
 
 	public function cargarPrestamoEjemplar ($numero_prestamo, $numero_ejemplar){

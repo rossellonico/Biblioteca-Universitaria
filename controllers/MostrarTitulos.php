@@ -65,17 +65,16 @@ if(count($_POST)>0){
 
         }
         
-        
         $datolibro = $l->buscarPorTituloAutor ($_SESSION['titulo1'], $_SESSION['autor1'] );
         $sinTituloAutor=FALSE;
         $noHayCoincidencia = FALSE;
+        
         $v = new MostrarTitulos();
         $v->SinTituloAutor = $sinTituloAutor;
         $v->NoHayCoincidencia = $noHayCoincidencia;
         $v->Repetidos= $repetidos;
         $v->Confirmar = $confirmarPrestamo;
         $v->Libro = $datolibro;
-        //$sumador=0;
         $v ->render ();
     }
     /* SI APRETA EL BOTON DE BUSCAR */
@@ -103,7 +102,6 @@ if(count($_POST)>0){
         
         $v->NoHayCoincidencia = $noHayCoincidencia;
         $v->Confirmar = TRUE;
-        //$sumador=0;
         $v ->render ();				
     }
 }
