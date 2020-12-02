@@ -100,8 +100,7 @@ if(count($_POST)>0){
         /* 2) Si estoy aca es porque ninguno de los ejemplares esta prestado 
             Controlar si usuario no excede limites de ejemplares a prestar */
         else{    
-            //$tipo_usuario = $_SESSION['tipo_usuario'];
-            //$numero_socio = $_SESSION['numero_usuario'];
+          
             
             /* 2.a) Cantidad de ejemplares prestados */
             $cantidadEjemplaresPrestados = $l-> cantidadEjemplaresPrestados ($_SESSION['numero_usuario']); 
