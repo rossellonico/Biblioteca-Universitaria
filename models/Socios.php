@@ -7,7 +7,7 @@ class Socios extends Model {
 	
 		public function AplicarHashing($str){
 		
-		if (strlen ($str)<1 ) throw new validacionException ("error validacion 30");
+		if (strlen ($str)<1 ) throw new validacionException ("error validacion 37");
 		$str=sha1($str);
 		return $str;
 	}
@@ -21,8 +21,15 @@ class Socios extends Model {
 
 		public function TipoUsuario($numero_socio){
 		
-		if (!ctype_digit($numero_socio)) throw new validacionException ("error validacion 28");
-		if ($numero_socio < 1) throw new validacionException ("error validacion 29");
+		if (!ctype_digit($numero_socio)) throw new validacionException ("error validacion 38");
+		if ($numero_socio < 1) throw new validacionException ("error validacion 39");
+		
+		// Validacion del id de socio
+		$this->db->query("SELECT *
+							FROM socios
+							where numero_socio = $numero_socio 
+							LIMIT 1 ");
+		if ($this->db->numRows() != 1) throw new validacionException ("error validacion 40");
 
 		$this->db->query("SELECT tipo_usuario
 						  FROM socios
@@ -34,14 +41,14 @@ class Socios extends Model {
 	public function ValidarSocio($email, $clave){
 		
 		//Valido $email
-		if ( strlen ($email)<3 or strlen ($email)>320 ) throw new validacionException ("error validacion 26");
+		if ( strlen ($email)<3 or strlen ($email)>320 ) throw new validacionException ("error validacion 41");
+		if (!strpos($email, "@", 1)) throw new validacionException ("error validacion 42");
+		if (!strpos($email, ".", 3)) throw new validacionException ("error validacion 43");
 		$email = $this->db->escapeString($email);
-		$email = $this->db->escapeWildcards($email);
 
 		//Valido $clave
-		if ( strlen ($clave)<1 or strlen ($clave)>40 ) throw new validacionException ("error validacion 27");
+		if ( strlen ($clave)<1 or strlen ($clave)>40 ) throw new validacionException ("error validacion 44");
 		$clave = $this->db->escapeString($clave);
-		$clave = $this->db->escapeWildcards($clave);
 
 		//Ya tengo las variable limpias
 		$auxSocio=$this->getTodos();

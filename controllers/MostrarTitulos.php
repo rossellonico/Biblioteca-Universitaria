@@ -89,7 +89,7 @@ if(count($_POST)>0){
         $noHayCoincidencia = FALSE;
         $v = new MostrarTitulos();
         
-        if (empty ($_SESSION['titulo1']) and empty ($_SESSION['autor1'])){
+        if ( (strlen ($_SESSION['titulo1']) < 3 ) and ( strlen ($_SESSION['autor1']) < 3 )  ){
             $sinTituloAutor=TRUE;        
             $v->SinTituloAutor = $sinTituloAutor;
         }
@@ -111,7 +111,8 @@ else{
     $sinTituloAutor=FALSE;
     $noHayCoincidencia = FALSE;
     $v = new MostrarTitulos();
-    if (empty ($_SESSION['titulo1']) and empty ($_SESSION['autor1'])){
+    
+    if ( (strlen ($_SESSION['titulo1']) < 3 ) and ( strlen ($_SESSION['autor1']) <3 )  ){
         $sinTituloAutor=TRUE;        
         $v->SinTituloAutor = $sinTituloAutor;
     }
